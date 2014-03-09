@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+
+  "name": "Play on TV",
+  "description": "Send video to TV (XBMC)",
+  "version": "0.1",
+
+  "icons": {
+    "16": "icon/icons8_tv16.png",
+    "48": "icon/icons8_tv48.png",
+    "128": "icon/icons8_tv128.png" 
+  },
+
+  "permissions": [
+    "declarativeWebRequest",
+    "tabs",
+    "*://*/*"
+  ],
+
+  "background": {
+    "scripts": ["eventPage.js"],
+    "persistent": false
+  },
+
+  "page_action": {
+    "default_title": "Play on TV",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "19": "icon/icons8_tv19.png",
+      "38": "icon/icons8_tv38.png"
+      }
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
