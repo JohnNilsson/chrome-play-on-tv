@@ -1,0 +1,3 @@
+[submodule "lib/xbmc-ws"]
+	path = lib/xbmc-ws
+	url = https://github.com/PaulAvery/xbmc-ws.git
