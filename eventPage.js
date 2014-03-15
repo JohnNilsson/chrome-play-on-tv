@@ -6,9 +6,20 @@
 			$declarativeWebRequest.onRequest.addRules([{
 				conditions:[
 					new $declarativeWebRequest.RequestMatcher({
-						contentType: ["video/mp4"],
+						contentType: ["video/mp4", "video/webm"],
+						stages: [ "onHeadersReceived"]
+					}),
+					new $declarativeWebRequest.RequestMatcher({
+						contentType: ["application/occet-stream"],
+						url: { urlContains: "mp4" },
+						stages: [ "onHeadersReceived"]
+					}),
+					new $declarativeWebRequest.RequestMatcher({
+						contentType: ["application/occet-stream"],
+						url: { urlContains: "webm" },
 						stages: [ "onHeadersReceived"]
 					})
+
 				],
 				actions: [
 					new $declarativeWebRequest.SendMessageToExtension({
